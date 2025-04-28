@@ -48,7 +48,7 @@ pipeline {
                         if (sh(returnStatus: true, script: "git diff --quiet --exit-code ./Manifest/deployment.yaml") != 0) {
                             sh 'git config --global user.email "jenkins@example.com"'
                             sh 'git config --global user.name "Jenkins CI"'
-                            sh 'git add ./manifest-files/deployment.yaml'
+                            sh 'git add ./Manifest/deployment.yaml'
                             sh "git commit -m 'Update deployment image to ${NEW_IMAGE_NAME}'"
                             
                             sh """
