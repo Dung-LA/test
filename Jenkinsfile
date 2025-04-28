@@ -43,9 +43,9 @@ pipeline {
 
                         sh "git checkout main"
                         sh "git pull origin main"
-                        sh "sed -i 's|image: .*|image: ${NEW_IMAGE_NAME}|' ./manifest-files/deployment.yaml"
+                        sh "sed -i 's|image: .*|image: ${NEW_IMAGE_NAME}|' ./Manifest/deployment.yaml"
 
-                        if (sh(returnStatus: true, script: "git diff --quiet --exit-code ./manifest-files/deployment.yaml") != 0) {
+                        if (sh(returnStatus: true, script: "git diff --quiet --exit-code ./Manifest/deployment.yaml") != 0) {
                             sh 'git config --global user.email "jenkins@example.com"'
                             sh 'git config --global user.name "Jenkins CI"'
                             sh 'git add ./manifest-files/deployment.yaml'
