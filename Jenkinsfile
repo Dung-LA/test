@@ -41,8 +41,8 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'github-dung', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASSWORD')]) {
                         def NEW_IMAGE_NAME = "${DOCKER_HUB_REPO}:${BUILD_NUMBER}"
 
-                        sh "git checkout jenkins"
-                        sh "git pull origin jenkins"
+                        sh "git checkout main"
+                        sh "git pull origin main"
                         sh "sed -i 's|image: .*|image: ${NEW_IMAGE_NAME}|' ./manifest-files/deployment.yaml"
 
                         if (sh(returnStatus: true, script: "git diff --quiet --exit-code ./manifest-files/deployment.yaml") != 0) {
@@ -60,7 +60,7 @@ pipeline {
                                   wait: false, 
                                   parameters: [
                                       string(name: 'DOCKER_TAG', value: "${BUILD_NUMBER}"),
-                                      string(name: 'GIT_BRANCH', value: 'jenkins'),
+                                      string(name: 'GIT_BRANCH', value: 'main'),
                                       string(name: 'DEPLOYMENT_PATH', value: './manifest-files/deployment.yaml')
                                   ]
                         } else {
