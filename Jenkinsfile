@@ -19,7 +19,7 @@ pipeline {
             steps {
                 git branch: 'main', 
                     credentialsId: 'github-dung', 
-                    url: 'https://github.com/Dung-LA/test.git'
+                    url: 'git@github.com:dungla101/test.git'
             }
         }
 
