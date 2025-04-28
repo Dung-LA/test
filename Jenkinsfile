@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_REPO = 'dungla1/weather-app'
         GIT_REPO_NAME = 'test'
-        GIT_USER_NAME = 'Dung-LA'
+        GIT_USER_NAME = 'dungla101'
         DEPLOY_JOB_NAME = 'eks-deployment'
     }
 
