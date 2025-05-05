@@ -52,7 +52,7 @@ pipeline {
                             sh "git commit -m 'Update deployment image to ${NEW_IMAGE_NAME}'"
                             
                             sh """
-                                git push https://${GIT_USER}:${GIT_PASSWORD}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:jenkins
+                                git push https://${GIT_USER}:${GIT_PASSWORD}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                             """
 
                             // Trigger deployment pipeline
