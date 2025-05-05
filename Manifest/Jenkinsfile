@@ -4,13 +4,13 @@ pipeline {
     parameters {
         string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Docker image tag to deploy')
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch to deploy from')
-        string(name: 'DEPLOYMENT_PATH', defaultValue: './manifest-files/deployment.yaml', description: 'Path to deployment file')
+        string(name: 'DEPLOYMENT_PATH', defaultValue: './Manifest/deployment.yaml', description: 'Path to deployment file')
     }
 
     environment {
         AWS_REGION = 'us-east-1'
         CLUSTER_NAME = 'dev-cluster'
-        GIT_REPO_URL = 'https://github.com/Dung-LA/test.git'
+        GIT_REPO_URL = 'https://github.com/dungla101/test.git'
         NAMESPACE = 'web-app'
         APP_NAME = 'weather-app'
     }
@@ -89,8 +89,8 @@ pipeline {
                     withAWS(credentials: 'aws-credentials', region: "${AWS_REGION}") {
                         // Apply kubernetes manifests
                         sh """
-                            kubectl apply -f manifest-files/deployment.yaml -n ${NAMESPACE}
-                            kubectl apply -f manifest-files/service.yaml -n ${NAMESPACE}
+                            kubectl apply -f Manifest/deployment.yaml -n ${NAMESPACE}
+                            kubectl apply -f Manifest/service.yaml -n ${NAMESPACE}
                         """
                         
                         // Wait for deployment to complete
