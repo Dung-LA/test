@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: weather-app
-        image: dungla1/weather-app:18
+        image: dungla1/weather-app:19
         ports:
         - containerPort: 3000
         env:
